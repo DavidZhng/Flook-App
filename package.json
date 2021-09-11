@@ -8,12 +8,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.21.4",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "expo": "~42.0.1",
+    "expo-constants": "^11.0.2",
     "expo-status-bar": "~1.0.4",
+    "express": "^4.17.1",
+    "formik": "^2.2.9",
+    "mongoose": "^6.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
