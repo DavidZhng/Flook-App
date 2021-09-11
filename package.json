@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
     "axios": "^0.21.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

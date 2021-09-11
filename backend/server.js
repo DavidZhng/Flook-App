@@ -10,7 +10,8 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
+//const uri = process.env.ATLAS_URI;
+const uri = process.envv.MONGODB_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true}
 );
 const connection = mongoose.connection;
@@ -25,7 +26,3 @@ app.use('/users', usersRouter);
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
-
-while(true){
-  
-}
