@@ -5,13 +5,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: {
     type: String,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
   },
   phoneNumber: {
-    type: Number,
+    type: String,
   },
   incognito: {
     type: Boolean,
@@ -27,8 +27,8 @@ const userSchema = new Schema({
       default: 0
     }
   },
-  prefs: [Number],
-  requests: [Number]
+  prefs: [String],
+  requests: [String]
 });
 
 const User = mongoose.model('User', userSchema);

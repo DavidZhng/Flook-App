@@ -24,7 +24,7 @@ import {
   TextLink,
   TextLinkContent,
   Colors,
-} from '../components/styles';
+} from './../components/styles';
 import { View, ActivityIndicator } from 'react-native';
 
 //colors
@@ -43,20 +43,21 @@ const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
+  //const [userInfo, setUser] = useState();
 
   const handleLogin = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = 'https://whispering-headland-00232.herokuapp.com/user/signin';
+    const url = 'https://desolate-castle-65187.herokuapp.com/users/login';
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
-        const { status, message, data } = result;
+        const { status, message, user} = result;
 
-        if (status !== 'SUCCESS') {
+        if (status !== 'Success') {
           handleMessage(message, status);
         } else {
-          navigation.navigate('Welcome', { ...data[0] });
+          navigation.navigate('Signup', {user});
         }
         setSubmitting(false);
       })

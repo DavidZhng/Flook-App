@@ -15,8 +15,8 @@ router.route('/add').post((req, res) => {
   const newUser = new User({username, password, phoneNumber});
 
   newUser.save()
-    .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .then(() =>  res.json({status: "Success", newUser}))
+    .catch(err => res.json({status: "Failure"}));
 });
 
 router.route('/:id').get((req, res) => {
@@ -31,11 +31,11 @@ router.route('/:id').delete((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/addPref/:id').post((req, res) => {
+router.route('/addPrefs/:id').post((req, res) => {
     User.findById(req.params.id)
         .then(user => {
         
-        user.prefs.push(req.body.id)
+        user.prefs.push(...req.body.prefs)
 
         user.save()
             .then(() => res.json('Preference Added!'))
@@ -92,4 +92,23 @@ router.route('/updateLoc/:id').post((req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/login').post((req, res) => {
+    User.findOne({username: req.body.username})
+        .then(user => {
+         
+        if (user.password == req.body.password) {
+            res.json({
+                status: "Success",
+                message: "Logged In",
+                user});
+        } else {
+            res.json({
+                status: "Failure",
+                message: "The username and password do not match."
+            });
+        }
+        })
+        .catch(err => res.json({
+            status: "Failure"}));
+    });
 module.exports = router;

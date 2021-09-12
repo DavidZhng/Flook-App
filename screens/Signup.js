@@ -24,7 +24,7 @@ import {
   TextLink,
   TextLinkContent,
   Colors,
-} from '../components/styles';
+} from './../components/styles';
 import { View, ActivityIndicator } from 'react-native';
 
 //colors
@@ -44,19 +44,19 @@ const Signup = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
-  const handleLogin = (credentials, setSubmitting) => {
+  const handleSignup = (credentials, setSubmitting) => {
     handleMessage(null);
-    const url = 'https://whispering-headland-00232.herokuapp.com/user/signin';
+    const url = 'https://desolate-castle-65187.herokuapp.com/users/add';
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
-        const { status, message, data } = result;
+        const { status, user } = result;
 
-        if (status !== 'SUCCESS') {
-          handleMessage(message, status);
+        if (status !== 'Success') {
+            handleMessage('An error occurred.');
         } else {
-          navigation.navigate('Welcome', { ...data[0] });
+          navigation.navigate('Login', { user });
         }
         setSubmitting(false);
       })
@@ -81,13 +81,13 @@ const Signup = ({ navigation }) => {
           <PageTitle>flook</PageTitle>
 
           <Formik
-            initialValues={{ username: '', password: '' }}
+            initialValues={{ phoneNumber: '', username: '', password: '' }}
             onSubmit={(values, { setSubmitting }) => {
-              if (values.username == '' || values.password == '') {
+              if (values.phoneNumber == '' || values.username == '' || values.password == '') {
                 handleMessage('Please fill in all fields');
                 setSubmitting(false);
               } else {
-                handleLogin(values, setSubmitting);
+                handleSignup(values, setSubmitting);
               }
             }}
           >
@@ -96,9 +96,9 @@ const Signup = ({ navigation }) => {
                 <MyTextInput
                   placeholder="mobile number"
                   placeholderTextColor={darkLight}
-                  onChangeText={handleChange('mobile number')}
-                  onBlur={handleBlur('mobile number')}
-                  value={values.username}
+                  onChangeText={handleChange('phoneNumber')}
+                  onBlur={handleBlur('phoneNumber')}
+                  value={values.phoneNumber}
                 />
                 <MyTextInput
                   placeholder="username"

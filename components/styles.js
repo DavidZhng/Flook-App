@@ -58,12 +58,13 @@ export const WelcomeImage = styled.Image`
 `;
 
 export const PageTitle = styled.Text`
-  font-size: 30px;
+  font-size: 36px;
   text-align: center;
   font-weight: bold;
   color: ${Colors.brand};
   padding: 10px;
   margin-top: 100px;
+  margin-bottom:30px;
 
   ${(props) =>
     props.welcome &&

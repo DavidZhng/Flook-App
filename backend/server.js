@@ -28,16 +28,13 @@
 // });
 require('./config/db')
 
-const app = express();
-const port = process.env.PORT || 5001;
-
-app.use(cors());
-app.use(express.json());
+const app = require('express')();
+const port = process.env.PORT || 3000;
 
 const usersRouter = require('./routes/users');
 
 const bodyParser = require('express').json;
-app.user(bodyParser());
+app.use(bodyParser());
 
 app.use('/users', usersRouter);
 
