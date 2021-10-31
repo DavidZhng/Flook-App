@@ -92,6 +92,18 @@ router.route('/updateLoc/:id').post((req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/updatePic/:id').post((req, res) => {
+    User.findById(req.params.id)
+        .then(user => {
+
+        user.pic = req.body.pic;
+
+        user.save()
+            .then(() => res.json('Picture Updated!'))
+            .catch(err => res.status(400).json('Error: ' + err));
+        })
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 router.route('/login').post((req, res) => {
     User.findOne({username: req.body.username})
         .then(user => {

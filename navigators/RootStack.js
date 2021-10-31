@@ -11,6 +11,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 // screens
 import Login from './../screens/Login';
 import Signup from './../screens/Signup';
+import Home from './../screens/Home';
+import Pref from './../screens/SelectPreferences';
+import Profile from './../screens/Profile';
+import Match from './../screens/Match';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +37,11 @@ const RootStack = () => {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Pref" component={Pref} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Match" component={Match} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

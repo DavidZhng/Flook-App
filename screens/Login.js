@@ -57,7 +57,7 @@ const Login = ({ navigation }) => {
         if (status !== 'Success') {
           handleMessage(message, status);
         } else {
-          navigation.navigate('Signup', {user});
+          navigation.navigate('Home', {user});
         }
         setSubmitting(false);
       })

@@ -56,7 +56,7 @@ const Signup = ({ navigation }) => {
         if (status !== 'Success') {
             handleMessage('An error occurred.');
         } else {
-          navigation.navigate('Login', { user });
+          navigation.navigate('Pref', user);
         }
         setSubmitting(false);
       })

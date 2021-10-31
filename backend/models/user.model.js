@@ -17,6 +17,9 @@ const userSchema = new Schema({
     type: Boolean,
     default: false
   },
+  pic: {
+    type: String
+  },
   location: {
     longitude: {
       type: Number,
